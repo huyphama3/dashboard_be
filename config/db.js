@@ -3,7 +3,7 @@ const oracledb = require("oracledb");
 const initOracleClient = () => {
   try {
     if (process.env.ORACLE_CLIENT_LOC) {
-      oracledb.initOracleClient();
+      oracledb.initOracleClient({ libDir: process.env.ORACLE_CLIENT_LOC });
     } else {
       oracledb.initOracleClient();
     }
