@@ -1,17 +1,18 @@
 const oracledb = require("oracledb");
 
+const oracledb = require("oracledb");
+
 const initOracleClient = () => {
   try {
-    if (process.env.ORACLE_CLIENT_LOC) {
-      oracledb.initOracleClient({ libDir: process.env.ORACLE_CLIENT_LOC });
-    } else {
-      oracledb.initOracleClient();
-    }
+    oracledb.initOracleClient();  // Không cần chỉ định libDir nữa
   } catch (err) {
     console.error("Error initializing Oracle client:", err);
     process.exit(1);
   }
 };
+
+// Kiểm tra kết nối
+initOracleClient();
 
 const initConnectionPool = async () => {
     try {
