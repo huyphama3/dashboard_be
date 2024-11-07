@@ -2,9 +2,13 @@ const oracledb = require("oracledb");
 
 const initOracleClient = () => {
   try {
-    oracledb.initOracleClient({ libDir: process.env.ORACLE_CLIENT_LOC });
+    if (process.env.ORACLE_CLIENT_LOC) {
+      oracledb.initOracleClient();
+    } else {
+      oracledb.initOracleClient();
+    }
   } catch (err) {
-    console.error("Error initializing oracle client:", err);
+    console.error("Error initializing Oracle client:", err);
     process.exit(1);
   }
 };
