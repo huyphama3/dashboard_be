@@ -1,7 +1,5 @@
 const oracledb = require("oracledb");
 
-const oracledb = require("oracledb");
-
 const initOracleClient = () => {
   try {
     oracledb.initOracleClient();  // Không cần chỉ định libDir nữa
