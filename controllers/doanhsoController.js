@@ -67,4 +67,4 @@ const getDoanhSo = async (req, res) => {
 
 
 
-module.exports = {getDoanhSo};
+module.exports = {getDoanhSo, index};

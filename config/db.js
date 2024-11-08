@@ -1,6 +1,7 @@
 const oracledb = require("oracledb");
 
 
+
 const initConnectionPool = async () => {
     try {
       console.log(`Initializing connection pool to ${process.env.POOL_ALIAS}`);
@@ -36,4 +37,4 @@ const initConnectionPool = async () => {
   .once("SIGUSR2", closePoolAndExit)
   .once("restart", closePoolAndExit);
   
-  module.exports = { initConnectionPool, closePoolAndExit };
+  module.exports = { initConnectionPool, closePoolAndExit};
