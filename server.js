@@ -3,7 +3,6 @@ const colors =require('colors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const oracledb = require('./config/db');
-const {initConnectionPool, closePoolAndExit} = require('./config/db');
 const setupRouting = require('./config/routing');
 const employeesRouter = require('./routers/employeesRouter');
 const cors = require('cors');
@@ -30,9 +29,6 @@ app.get("/test", (req, res) => {
 const PORT = process.env.PORT || 8110;
 
  // Test the connection
- initConnectionPool()
- .then(() => app.listen(PORT, console.log(`Server running on port ${PORT}`)))
- .catch((error) => {
-   console.log(error);
-   process.exit(1);
- });
+ app.listen(PORT, () => {
+  console.log(`listen to post ${PORT}`);
+});
