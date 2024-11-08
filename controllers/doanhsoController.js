@@ -1,6 +1,7 @@
 const db = require("../config/db");
 const oracledb = require("oracledb");
 
+
 const getDoanhSo = async (req, res) => {
     //logic lấy api tất cả nhân viên
     const sql = "SELECT DOANH_SO FROM doanh_so_kpi";
