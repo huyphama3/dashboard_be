@@ -132,7 +132,7 @@ class EmployeeKPIController {
       });
 
       const data = await consumeStream;
-      res.json({ data: data });
+      res.json(data);
     } catch (error) {
       console.log("Database error:", error);
       res.status(500).json({ msg: error.toString() });

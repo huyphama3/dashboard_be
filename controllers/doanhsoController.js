@@ -2,8 +2,9 @@ const db = require("../config/db");
 const oracledb = require("oracledb");
 
 
-const getDoanhSo = async (req, res) => {
-    //logic lấy api tất cả nhân viên
+class KPIController {
+
+  async getDoanhSo(req, res) {
     const sql = "SELECT DOANH_SO FROM doanh_so_kpi";
     let binds = {};
 
@@ -18,7 +19,11 @@ const getDoanhSo = async (req, res) => {
       let connection;
 
       try {
-        connection = await oracledb.getConnection(process.env.POOL_ALIAS);
+        connection = await oracledb.getConnection({
+          user: process.env.DB_USER,
+          password: process.env.DB_PASSWORD,
+          connectString: process.env.DB_CONN_STRING,
+        });
 
     const stream = connection.queryStream(sql, binds, options);
 
@@ -64,8 +69,13 @@ const getDoanhSo = async (req, res) => {
             }
         }
       }
+
+
+
+  }
+
+
+
 }
 
-
-
-module.exports = {getDoanhSo};
+module.exports = new KPIController();
