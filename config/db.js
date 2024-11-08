@@ -1,14 +1,5 @@
 const oracledb = require("oracledb");
 
-const initOracleClient = () => {
-  try {
-    // Không cần chỉ định libDir, Oracle sẽ tự động tìm thư viện từ LD_LIBRARY_PATH
-    oracledb.initOracleClient();
-  } catch (err) {
-    console.error("Error initializing Oracle client:", err);
-    process.exit(1);
-  }
-};
 
 const initConnectionPool = async () => {
     try {
@@ -45,4 +36,4 @@ const initConnectionPool = async () => {
   .once("SIGUSR2", closePoolAndExit)
   .once("restart", closePoolAndExit);
   
-  module.exports = { initConnectionPool, closePoolAndExit, initOracleClient };
+  module.exports = { initConnectionPool, closePoolAndExit };
