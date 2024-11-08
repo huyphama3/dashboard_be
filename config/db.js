@@ -1,16 +1,6 @@
 const oracledb = require("oracledb");
 
-const initOracleClient = () => {
-  try {
-    oracledb.initOracleClient();  // Không cần chỉ định libDir nữa
-  } catch (err) {
-    console.error("Error initializing Oracle client:", err);
-    process.exit(1);
-  }
-};
 
-// Kiểm tra kết nối
-initOracleClient();
 
 const initConnectionPool = async () => {
     try {
@@ -47,4 +37,4 @@ const initConnectionPool = async () => {
   .once("SIGUSR2", closePoolAndExit)
   .once("restart", closePoolAndExit);
   
-  module.exports = { initConnectionPool, closePoolAndExit, initOracleClient };
+  module.exports = { initConnectionPool, closePoolAndExit };
