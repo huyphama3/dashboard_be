@@ -30,7 +30,7 @@ app.get("/test", (req, res) => {
 //port 
 const PORT = process.env.PORT || 8110;
 
-
+initOracleClient();
  // Test the connection
  initConnectionPool()
  .then(() => app.listen(PORT, console.log(`Server running on port ${PORT}`)))
