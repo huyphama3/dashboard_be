@@ -6,7 +6,7 @@ class EmployeeKPIController {
 
 
   async getEmployees(req, res) {
-    const sql = "SELECT * FROM thong_tin_nhan_vien";
+    const sql = "SELECT * FROM KPI_EMP_CV";
     let binds = {};
   
     let options = {
@@ -43,7 +43,7 @@ class EmployeeKPIController {
   };
   
   async getNameEmployees(req, res) {
-    const sql = 'SELECT Ho_Ten FROM thong_tin_nhan_vien';
+    const sql = 'SELECT EMP_NAME FROM KPI_EMP_CV';
     let binds = {};
   
     let options = {
@@ -63,7 +63,7 @@ class EmployeeKPIController {
       });
       const result = await connection.execute(sql, binds, options);
   
-      const names = result.rows.map(row => row.HO_TEN);
+      const names = result.rows.map(row => row.EMP_NAME);
       console.log("Employee names:", names); // Ghi log kết quả
       res.json(names); // Trả về mảng tên nhân viên
     } catch (error) {

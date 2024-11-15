@@ -5,7 +5,7 @@ const oracledb = require("oracledb");
 class KPIController {
 
   async getDoanhSo(req, res) {
-    const sql = "SELECT DOANH_SO FROM doanh_so_kpi";
+    const sql = "SELECT GPCNTT_CONTRACT_REVENUE FROM KPI_EMP_CV";
     let binds = {};
 
     let options = {
@@ -77,7 +77,7 @@ class KPIController {
   async getThongTinHopDong(req, res) {
     const sql = `
       SELECT ISSUE_DATE, TOUCH_COMPANY_INFO, TOUCH_COMPANY_PHONE, GPCNTT_SOLUTION_NAME, GPCNTT_CONTRACT_VALUE
-      FROM An_Owner.KPI_THU_VIEC
+      FROM KPI_EMP_CV
       WHERE EMP_NAME = :empName
     `;
 
