@@ -2,9 +2,7 @@ const express = require('express');
 const colors =require('colors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
-const oracledb = require('./config/db');
 const setupRouting = require('./config/routing');
-const employeesRouter = require('./routers/employeesRouter');
 const cors = require('cors');
 
 
