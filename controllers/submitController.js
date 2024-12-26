@@ -32,7 +32,19 @@ class Submit{
         otherServiceRevenue,
       } = req.body;
 
-
+// Kiểm tra các trường bắt buộc
+if (!fileDate || !issueDate || !empName || !donVi || !empEmail) {
+  return res.status(400).json({
+    msg: "Vui lòng điền đầy đủ thông tin bắt buộc!",
+    missingFields: {
+      fileDate: !fileDate ? "Thiếu FILE_DATE" : null,
+      issueDate: !issueDate ? "Thiếu ISSUE_DATE" : null,
+      empName: !empName ? "Thiếu EMP_NAME" : null,
+      donVi: !donVi ? "Thiếu DON_VI" : null,
+      empEmail: !empEmail ? "Thiếu EMP_EMAIL" : null,
+    },
+  });
+}
 
     // Chuyển đổi định dạng ngày tháng nếu có giá trị
     const formattedFileDate = fileDate ? moment(fileDate, "DD/MM/YYYY").format("DD-MMM-YY") : moment().format("DD-MMM-YY");
